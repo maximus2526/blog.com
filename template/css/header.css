@@ -1,0 +1,33 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 68px;
+	
+}
+.header__logo {
+	margin-left: 69px;
+}
+
+
+.header__logo-img {
+	height: 23px;
+	width: 119px;
+	
+}
+
+.header__nav {
+	width: 500px;
+	justify-content: space-between;
+	display: flex;
+	align-items: center;
+	margin-right: 68px;
+
+}
+.header__nav-elem {
+	color: #626262;
+	font-family: "Playfair Display";
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	text-transform: uppercase;
+}

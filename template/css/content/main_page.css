@@ -1,0 +1,85 @@
+.content {
+	margin-top: 162px;
+	margin-left: 150px;
+	margin-right: 151px;
+	
+}
+
+.page-title{	
+	color: #626262;
+	font-family: "Playfair Display";
+	font-size: 32px;
+	text-align: left;
+	margin-bottom: 40px;
+}
+
+.content__wrapper {
+	display: flex;
+	margin: -40px -40px;
+	flex-wrap:wrap;
+
+}
+.content__element {
+	padding: 40px 40px;
+	flex: 1 1 50%;
+}
+
+
+.content__img {
+	height: 279px;
+	width: 420px;
+}
+
+
+
+.content_subtitles {
+	padding-top: 32px; 
+	color: #b4ad9e;
+	font-family: Ubuntu;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.content__titles {
+	display: inline-block;
+	padding-top: 28px; 
+	padding-bottom: 34px;
+	color: #626262;
+	font-family: "Playfair Display";
+	font-size: 30px;
+	text-align: left;
+	}
+
+.content_preview {
+	display: block;
+	color: #626262;
+	font-family: "Playfair Display";
+	font-size: 14px;
+	line-height: 24px;
+	text-align: left;
+}
+.pagination {
+	margin-top: 79px;
+	margin-bottom: 62px;
+	text-align: center;
+
+}
+
+.pagination__btn {
+	width: 32px;
+	height: 32px;
+	border: 2px solid #b4ad9e;
+	background-color: #b4ad9e;
+	color: #ffffff;
+}
+.pagination__btn:hover {
+	background-color: white;
+	color: #b4ad9e;
+	border: 2px solid #b4ad9e;
+}
+
+.pagination__btn:active {
+	background-color: #f5c763;
+}
