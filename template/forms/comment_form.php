@@ -15,7 +15,7 @@
 
         <div class="comment__form">
             <img class="comment__img" src="template\img\comment\profile_picture.png" alt=""> 
-            <input placeholder="Join the discussion" type="text" class="comment__input" name="" id="" cols="30" rows="10">
+            <input placeholder="Join the discussion" type="text" class="comment__input" name="comment" id="" cols="30" rows="10">
         </div>
     </form>
     
