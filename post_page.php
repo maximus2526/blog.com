@@ -18,10 +18,10 @@
         include 'template/static/header.php';
     ?>
 
-
+    
     <?php 
     // COMMENT FORM
-        include 'forms/comment_form.php';
+        include 'template/forms/comment_form.php';
     ?>
 
 
