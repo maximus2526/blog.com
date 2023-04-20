@@ -74,7 +74,7 @@
 
     <?php 
     // COMMENT FORM
-        include $_SERVER['DOCUMENT_ROOT'].'/template/forms/comment_form.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/template/forms/test_form.php';
     ?>
 
 
