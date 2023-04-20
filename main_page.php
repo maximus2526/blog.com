@@ -1,6 +1,8 @@
+<?php include 'mysql_manager/db_manage.php'; ?>
+
 <div class="content">
         <h1 class="page-title">Blog</h1>
-
+        
         <div class="content__wrapper">
             <div class="content__element">
                 <img src="template/img/blogtest/img1.jpg" alt="" class="content__img">
