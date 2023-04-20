@@ -88,7 +88,7 @@
 
     function post_comment($db_obj, $post_id){
         $post_id = (int)$post_id; 
-        $comment = htmlspecialchars($_GET['comment']);
+        $comment = htmlspecialchars($_POST['comment']);
         $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES (NULL, $post_id, 'admin', '$comment', '".date('Y-m-d')."')";
 
         $result = $db_obj->query($sql);
