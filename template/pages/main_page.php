@@ -30,7 +30,7 @@
 <div class="pagination">
     <form action="" method="get">
     <?php 
-        $entries_count = get_entries_count($conn)[0][0]; // Extracted value from mysqli_result
+        $entries_count = get_entries_count($conn, "post")[0][0]; // Extracted value from mysqli_result
         $num_pages = ceil($entries_count  / 4);          // How many pages will there be
         for ($page_num=1; $page_num <= $num_pages; $page_num++) { 
     ?>
@@ -40,11 +40,5 @@
     <?php }  ?> 
     </form>
 </div>
-
-
-
-
-
-
 
 <?php $conn->close(); ?>   
