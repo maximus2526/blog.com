@@ -27,7 +27,7 @@
 
     <?php 
     // CONTENT
-       include 'main_page.php';
+       include 'template/pages/main_page.php';
     ?>
 
 

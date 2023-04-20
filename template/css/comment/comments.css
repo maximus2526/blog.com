@@ -82,4 +82,6 @@
     text-transform: uppercase;
     padding-left: 34px;
 }
-
+.comment__input:focus::input-placeholder{
+    color: while;
+}
