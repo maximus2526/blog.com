@@ -5,22 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog title</title>
-    <link rel="stylesheet" href="template/css/null.css">
-    <link rel="stylesheet" href="template/css/header.css">
-    <link rel="stylesheet" href="template/css/footer.css">
-    <link rel="stylesheet" href="template/css/content/main_page.css"> 
-    <link rel="stylesheet" href="template/css/content/photodiary.css">
+    <link rel="stylesheet" href="/template/css/null.css">
+    <link rel="stylesheet" href="/template/css/header.css">
+    <link rel="stylesheet" href="/template/css/footer.css">
+    <link rel="stylesheet" href="/template/css/content/main_page.css"> 
+    <link rel="stylesheet" href="/template/css/content/post_page.css">
 
 </head>
 <body>
  
     <?php 
     // HEADER
-        include 'template/static/header.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/template/static/header.php';
 
     ?>
     
-    <img class="bigphoto" src="template\img\photodiary\image1.jpg" alt="">
+    <img class="bigphoto" src="\template\img\photodiary\image1.jpg" alt="">
     <div class="container">
         <div class="content">
             <p class="content_subtitles">photodiary</p>
@@ -31,7 +31,7 @@
                 Lorem ipsum dolor sit amet, <b>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </b>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, <b>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
             </div>
-            <img class="content__photos" src="template\img\photodiary\3-photo.jpg" alt="">
+            <img class="content__photos" src="\template\img\photodiary\3-photo.jpg" alt="">
 
             <div class="content__text-italic">“Duis aute irure dolor in reprehenderit in voluptate velit
                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
@@ -56,15 +56,15 @@
             <p class="content_subtitles">you may also like</p>
             <div class="block-also-like__images">
                 <div class=block-col>
-                    <img src="template/img/blogtest/img3.jpg" alt="" class="content__img">
+                    <img src="/template/img/blogtest/img3.jpg" alt="" class="content__img">
                     <h2>Cold winter days</h2>
                 </div>
                 <div class=block-col>
-                    <img src="template/img/blogtest/img3.jpg" alt="" class="content__img">
+                    <img src="/template/img/blogtest/img3.jpg" alt="" class="content__img">
                     <h2>A day exploring the Alps</h2>
                 </div>
                 <div class=block-col>
-                    <img src="template/img/blogtest/img3.jpg" alt="" class="content__img">
+                    <img src="/template/img/blogtest/img3.jpg" alt="" class="content__img">
                     <h2>American dream</h2>
                 </div>
             </div>
@@ -74,13 +74,13 @@
 
     <?php 
     // COMMENT FORM
-        include 'template/forms/comment_form.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/template/forms/comment_form.php';
     ?>
 
 
     <?php 
     // FOOTER
-        include 'template/static/footer.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/template/static/footer.php';
     ?>
 </body>
 </html>
