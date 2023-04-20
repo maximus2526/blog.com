@@ -6,6 +6,14 @@ $post_id = $_GET['post_id']
 
 <div class="comments">
 <link rel="stylesheet" href="\template\css\comment\comments.css">
+        <?php
+            // Hundle input
+            
+            if(isset($_POST["comment"])){
+                post_comment($conn, $post_id);
+                header("Location: " . $_SERVER['PHP_SELF']."?post_id=$post_id");
+            }
+        ?>
     <form action="" method="post">
         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
         <p class="comment__count"><?=get_entries_count($conn, "comments", $post_id)[0][0]?> COMMENTS</p> 
@@ -27,17 +35,12 @@ $post_id = $_GET['post_id']
              }
          }  
         ?>
-        <?php
-            // Hundle input
-            
-            if(isset($_POST["comment"])){
-                post_comment($conn, $post_id);
-            }
-        ?>
+
         <div class="comment__form">
             <img class="comment__img" src="\template\img\comment\profile_picture.png" alt=""> 
             <input placeholder="Join the discussion" type="text" class="comment__input"  name="comment">
         </div>
+
     </form>
     
 </div>
