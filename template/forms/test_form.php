@@ -1,3 +1,4 @@
+<!-- Just stylized form of comments for test page photodiary -->
 <div class="comments">
 <link rel="stylesheet" href="\template\css\comment\comments.css">
     <form action="" method="post">

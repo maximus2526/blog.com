@@ -1,3 +1,5 @@
+<!-- Test page "photodiary" -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
