@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
     <link rel="stylesheet" href="/template/css/footer.css">
     <link rel="stylesheet" href="/template/css/content/main_page.css">
     <link rel="stylesheet" href="/template/css/content/post_page.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
     <?php 
@@ -21,7 +21,9 @@
     ?>
 
     <div class="content">
-        <?php $post_id = $_GET["post_id"] ?>
+        <?php 
+        $post_id = $_GET["post_id"] 
+        ?>
         <h1><?=get_attr($conn, "post_title", $post_id);?></h1>
         <p class="content__text-italic"><?=get_attr($conn, "post_date", $post_id);?></p>
         <img class="content__photos" src="<?=get_attr($conn, "post_img_path", $post_id);?>" alt="">

@@ -4,7 +4,7 @@
         </div>
         <div class="header__nav">
             <a class="header__nav-elem" href="#">lifestyle</a>
-            <a class="header__nav-elem" href="/template/pages/photodiary.php">photodiary</a>
+            <a class="header__nav-elem" href="/template/pages/photodiary.php">photodiary</a> 
             <a class="header__nav-elem" href="#">music</a>
             <a class="header__nav-elem" href="#">travel</a>
         </div>
