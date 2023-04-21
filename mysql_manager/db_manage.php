@@ -1,5 +1,4 @@
 <?php
- // TODO: Перевірки всього зроби
 
     $host = "localhost";
     $user = "root";
@@ -11,21 +10,6 @@
         $conn->connect($host = "localhost", $user = "root", $pass = "", $db = "blogdb");
         return $conn;
     }
-
-    //  Create table post if not exist
-    // function createTable($obj = $conn){
-    //     $sql = "
-    //     CREATE TABLE post (
-    //         post_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    //         post_img_path varchar(255),
-    //         post_title varchar(255),
-    //         post_date date,
-    //         post_short_text varchar(255),
-    //         post_text text(1500));";
-    //      $obj->query($sql);
-    // }
-
-
 
     function get_attr($db_obj, $attr, $post_id){
         $sql = "SELECT * FROM `post`;";
@@ -58,7 +42,7 @@
         $item = $db_obj->query($sql);
 
         if($item === false){
-            // обработка ошибки
+            // Error handle
             printf("Error: %s\n", $db_obj->error);
             return 0;
         }else{

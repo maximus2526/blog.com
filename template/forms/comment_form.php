@@ -6,7 +6,7 @@ $post_id = $_GET['post_id']
 
 <div class="comments">
 <link rel="stylesheet" href="\template\css\comment\comments.css">
-        <?php
+            <?php
             // Hundle input
             
             if(isset($_POST["comment"])){
