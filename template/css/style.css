@@ -1,3 +1,5 @@
+
+
 /* Reset styles to zero for better personalization */
 
 *{
@@ -154,7 +156,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 
 
-.content_subtitles {
+.content-subtitles {
 	padding-top: 32px; 
 	color: #b4ad9e;
 	font-family: Ubuntu;
@@ -174,7 +176,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	text-align: left;
 	}
 
-.content_preview {
+.content-preview {
 	display: block;
 	color: #626262;
 	font-family: "Playfair Display";
@@ -241,7 +243,7 @@ h2{
     margin-right: 397px;
 }
 
-.content_subtitles{
+.content-subtitles{
     margin-top: 99px;
 }
 .content-text-italic{
@@ -271,7 +273,7 @@ h2{
     background-color: #f2f2f2;
 }
 
-.block-also-like .content_subtitles{
+.block-also-like .content-subtitles{
     padding-left: 156px;
     padding-top: 69px;
     padding-bottom: 40px;
@@ -336,14 +338,14 @@ h2{
 	margin-bottom: 10px;
 }
 
-.footer-social-img {
+/* .footer-social-img {
 	filter: invert(100%);
 	margin: 21px;
 }
 
 .footer-social-img:hover {
     filter: grayscale(0%);
-}
+} */
 
 .footer-social:last-child {
     margin-right: 150px;

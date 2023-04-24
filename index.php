@@ -1,15 +1,15 @@
-
     <?php 
+        include 'mysql-manager/db-manage.php';
+
+    // PATH  
+        include 'routes.php';
+
     // HEADER
         include 'template/static/header.php';
-    ?>
 
-    <?php 
     // CONTENT
-       include 'main_page.php';
-    ?>
+        include 'main-page.php';
 
-    <?php 
     // FOOTER
         include 'template/static/footer.php';
     ?>

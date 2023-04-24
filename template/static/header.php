@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog title</title>
-    <link rel="stylesheet" href="template/css/style.css">
+    <link rel="stylesheet" href="<?php get_file_path() ?>/template/css/style.css">
 </head>
 <body>
 
