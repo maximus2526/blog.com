@@ -44,12 +44,23 @@
             return $result->fetchColumn();
         }
 
+
+
+        public function get_comments_count($post_id) {
+            // Get count comments in the post
+            $sql = "SELECT COUNT(*) FROM `blogdb`.`comments` WHERE `post_id` = {$post_id} ORDER BY `post_id` ASC;";
+            $result = $this->query($sql);
+            return $result->fetchColumn();
+        }
+
+
+
         public function post_comment($post_id, $comment) {
             $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES (NULL, $post_id, 'admin', '$comment', '".date('Y-m-d')."')";
             $this->query($sql);
         }
 
-        public function get_comments($post_id, $db_obj){
+        public function get_comments($post_id){
             $sql = "SELECT * FROM `comments` where `post_id` = $post_id;";
             $result = $this->query($sql);
             return $result->fetchAll();
@@ -58,9 +69,8 @@
 
     }
 
-    $conn = new Connection('config.php');
-    echo $conn->get_entries_count('post');  
-    $conn->post_comment(323, "sdadssaddassa123456");
+    $PDO = new Connection('config.php');
+
 
     ?>
 

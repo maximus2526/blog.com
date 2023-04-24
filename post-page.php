@@ -6,6 +6,7 @@
     
     <?php  
         include 'mysql-manager/db-manage.php';
+        include 'mysql-manager/pdo-manager.php';
 
         $conn = connect();
     ?>
