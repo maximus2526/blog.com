@@ -15,19 +15,20 @@
 	margin-bottom: 40px;
 }
 
-.content__wrapper {
+.content-wrapper {
 	display: flex;
 	margin: -35px -35px;
 	flex-wrap:wrap;
+	
 
 }
-.content__element {
+.content-element {
 	padding: 35px 35px;
 	flex: 1 1 50%;
 }
 
 
-.content__img {
+.content-img {
 	height: 279px;
 	width: 420px;
 }
@@ -44,7 +45,7 @@
 	text-transform: uppercase;
 }
 
-.content__titles {
+.content-titles {
 	display: inline-block;
 	padding-top: 28px; 
 	padding-bottom: 34px;
@@ -70,20 +71,20 @@
 
 }
 
-.pagination__btn {
+.pagination-btn {
 	width: 32px;
 	height: 32px;
 	border: 2px solid #b4ad9e;
 	background-color: #b4ad9e;
 	color: #ffffff;
 }
-.pagination__btn:hover {
+.pagination-btn:hover {
 	background-color: white;
 	color: #b4ad9e;
 	border: 2px solid #b4ad9e;
 }
 
-.pagination__btn:active {
+.pagination-btn:active {
 	background-color: #f5c763;
 }
 

@@ -5,7 +5,7 @@
     margin-left: 151px;
     margin-right: 151px;
 }
-.comment__count {
+.comment-count {
     margin-top: 67px;
     margin-bottom: 43px;
     color: #b4ad9e;
@@ -15,14 +15,14 @@
     text-align: left;
     text-transform: uppercase;
 }
-.comment__img {
+.comment-img {
     max-height: 70px;
     max-width: 69px;
     border-radius: 50%;
     margin-right: 38px;
 }
 
-.comment__name {
+.comment-name {
     
     color: #626262;
     font-family: "Playfair Display";
@@ -31,7 +31,7 @@
     text-align: left;
 
 }
-.comment__text {
+.comment-text {
     margin-top: 15px;
     margin-bottom: 38px;
     color: #626262;
@@ -44,16 +44,16 @@
 }
 
 
-.comment__container{
+.comment-container{
     display: flex;
     flex-direction: row;
 
 }
-.comment__block{
+.comment-block{
     text-align: justify;
 }
 
-.comment__reply{
+.comment-reply{
     display: block;
     color: #b4ad9e;
     font-family: Ubuntu;
@@ -64,18 +64,18 @@
     margin-bottom: 57px;
 }
 
-.comment__form{
+.comment-form{
     display: flex;
     margin-bottom: 126px;
 }
 
-.comment__input{
+.comment-input{
     border-radius: 5px;
     border: 1px solid #c8c8c8;
     height: 70px;
     width:  100%;
 }
-.comment__input[placeholder]{
+.comment-input[placeholder]{
     color: #c8c8c8;
     font-family: Ubuntu;
     font-size: 14px;
@@ -84,6 +84,6 @@
     text-transform: uppercase;
     padding-left: 34px;
 }
-.comment__input:focus::input-placeholder{
+.comment-input:focus::input-placeholder{
     color: while;
 }

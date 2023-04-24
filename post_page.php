@@ -25,10 +25,10 @@
         $post_id = $_GET["post_id"] 
         ?>
         <h1><?=get_attr($conn, "post_title", $post_id);?></h1>
-        <p class="content__text-italic"><?=get_attr($conn, "post_date", $post_id);?></p>
-        <img class="content__photos" src="<?=get_attr($conn, "post_img_path", $post_id);?>" alt="">
+        <p class="content-text-italic"><?=get_attr($conn, "post_date", $post_id);?></p>
+        <img class="content-photos" src="<?=get_attr($conn, "post_img_path", $post_id);?>" alt="">
 
-        <p class="content__text" id="content"><?=get_attr($conn, "post_text", $post_id);?></p> 
+        <p class="content-text" id="content"><?=get_attr($conn, "post_text", $post_id);?></p> 
 
     </div>    
 
@@ -39,13 +39,13 @@
 
     <?php 
     // COMMENT FORM
-        include $_SERVER['DOCUMENT_ROOT'].'/template/forms/comment_form.php';
+        include 'template/forms/comment_form.php';
     ?>
 
 
     <?php 
     // FOOTER
-        include $_SERVER['DOCUMENT_ROOT'].'/template/static/footer.php';
+        include 'template/static/footer.php';
     ?>
 </body>
 </html>
