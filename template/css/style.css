@@ -240,7 +240,7 @@ h2{
 }
 
 .content{
-    margin-right: 397px;
+    margin-right: 100px;
 }
 
 .content-subtitles{
@@ -338,28 +338,17 @@ h2{
 	margin-bottom: 10px;
 }
 
-/* .footer-social-img {
-	filter: invert(100%);
+.footer-social-img {
 	margin: 21px;
 }
 
-.footer-social-img:hover {
-    filter: grayscale(0%);
-} */
+
 
 .footer-social:last-child {
     margin-right: 150px;
 }
 
 
-@media screen and (max-width: 755px) { 
-	.footer-social:last-child {
-		margin-right: 10px;
-	}
-	.footer-privacy-elem:first-child {
-		margin-left: 10px;
-	}
-	}
 
 /* Styles for comment form */
 

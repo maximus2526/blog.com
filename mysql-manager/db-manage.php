@@ -4,7 +4,6 @@
     $user = "root";
     $pass = "";
     $db = "blogdb";
-    echo "OK";
     function connect(){
         // Connecting to db
         $conn = new mysqli();

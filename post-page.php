@@ -1,5 +1,6 @@
     <?php     
     // HEADER
+        include 'routes.php';
         include 'template/static/header.php';
         ?>
     
