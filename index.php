@@ -1,8 +1,14 @@
-    <?php 
-        include 'mysql-manager/db-manage.php';
+  
 
+
+  <?php 
+
+      
     // PATH  
         include 'routes.php';
+
+    // DB
+        include 'mysql-manager/db-manage.php';
 
     // HEADER
         include 'template/static/header.php';

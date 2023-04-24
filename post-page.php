@@ -1,13 +1,17 @@
-    <?php  
+    <?php     
     // HEADER
-        include 'mysql-manager/db-manage.php';
         include 'template/static/header.php';
+        ?>
+    
+    <?php  
+        include 'mysql-manager/db-manage.php';
+
         $conn = connect();
     ?>
 
     <div class="content">
         <?php 
-        $post_id = $_GET["post_id"] 
+        $post_id = $_GET["post_id"];
         ?>
         <h1><?=get_attr($conn, "post_title", $post_id);?></h1>
         <p class="content-text-italic"><?=get_attr($conn, "post_date", $post_id);?></p>
@@ -22,7 +26,7 @@
 
     <?php 
     // COMMENT FORM
-        include 'template/forms/comment_form.php';
+        include 'template/forms/comment-form.php';
     ?>
 
 

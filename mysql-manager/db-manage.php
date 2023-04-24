@@ -4,7 +4,7 @@
     $user = "root";
     $pass = "";
     $db = "blogdb";
-
+    echo "OK";
     function connect(){
         // Connecting to db
         $conn = new mysqli();
@@ -18,6 +18,7 @@
     }
 
     function get_attr($db_obj, $attr, $post_id){
+
         // Get only one value from table
         $sql = "SELECT * FROM `post`;";
         $entry = "";
@@ -47,7 +48,6 @@
             $sql = "SELECT COUNT(*) FROM `blogdb`.`comments` WHERE `post_id` = {$post_id} ORDER BY `post_id` ASC;";
         
         $item = $db_obj->query($sql);
-
         if($item === false){
             // Error handle
             printf("Error: %s\n", $db_obj->error);

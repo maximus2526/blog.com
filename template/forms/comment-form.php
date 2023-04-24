@@ -1,4 +1,4 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'].'/mysql_manager/db_manage.php'; 
+<?php
 $conn = connect();
 $post_id = $_GET['post_id']
 ?>

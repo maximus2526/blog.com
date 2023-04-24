@@ -32,7 +32,7 @@
     <form action="" method="get">
     <?php 
         $entries_count = get_entries_count($conn, "post"); // Extracted value from mysqli_result
-        $num_pages = ceil($entries_count[0][0]  / 4);      // How many pages will there be
+        $num_pages = ceil($entries_count[0][0] / 4);      // How many pages will there be
         for ($page_num=1; $page_num <= $num_pages; $page_num++) { 
     ?>
 
