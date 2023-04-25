@@ -44,7 +44,11 @@
             return $result->fetchColumn();
         }
 
-
+        public function get_post_data($value, $post_id) {
+            // Get count data in the table
+            $result = $this->query("SELECT `$value` FROM `post` where `post_id` = $post_id" );
+            return $result->fetchColumn();
+        }
 
         public function get_comments_count($post_id) {
             // Get count comments in the post
@@ -53,8 +57,6 @@
             return $result->fetchColumn();
         }
 
-
-
         public function post_comment($post_id, $comment) {
             $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES (NULL, $post_id, 'admin', '$comment', '".date('Y-m-d')."')";
             $this->query($sql);
@@ -62,6 +64,14 @@
 
         public function get_comments($post_id){
             $sql = "SELECT * FROM `comments` where `post_id` = $post_id;";
+            $result = $this->query($sql);
+            return $result->fetchAll();
+        }
+
+        public function get_array_paginated($page_num,  $active_page){
+            // Pagination realization
+            $formula = ceil(($active_page-1)*$page_num);
+            $sql = "SELECT * FROM post ORDER BY `post`.`post_id` ASC LIMIT {$page_num} OFFSET {$formula};";
             $result = $this->query($sql);
             return $result->fetchAll();
         }

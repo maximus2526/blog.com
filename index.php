@@ -8,7 +8,7 @@
         include 'routes.php';
 
     // DB
-        include 'mysql-manager/db-manage.php';
+        include 'mysql-manager/pdo-manager.php';
 
     // HEADER
         include 'template/static/header.php';

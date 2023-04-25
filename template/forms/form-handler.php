@@ -1,6 +1,6 @@
 <?php
 // Hundle input
-include 'mysql-manager/pdo-manager.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // отримуємо дані з форми

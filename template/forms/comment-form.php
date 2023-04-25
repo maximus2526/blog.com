@@ -1,12 +1,13 @@
 <?php
     $post_id = $_GET['post_id'];
     
+    
 ?>
 
 
 <div class="comments">
-<link rel="stylesheet" href="\template\css\comment\comments.css">
-    <form action="" method="post">
+<link rel="stylesheet" href="/template/css/comment/comments.css">
+    <form action="template/forms/form-handler.php" method="post">
         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
         <!-- Get count of comments for each post -->
         <p class="comment-count"><?=$PDO->get_comments_count($post_id)?> COMMENTS</p> 
@@ -22,7 +23,7 @@
             foreach($comments as $comment) {  
         ?>
         <div class="comment-container">
-            <img class="comment-img" src="\template\img\comment\profile_picture.png" alt=""> 
+            <img class="comment-img" src="/template/img/comment/profile_picture.png" alt=""> 
             <div class="comment-block">
                 <span class="comment-name"><?= $comment["name"] ?></span>
                 <p class="comment-text"><?= $comment["comment_text"] ?></p>
@@ -36,7 +37,7 @@
         ?>
 
         <div class="comment-form">
-            <img class="comment-img" src="\template\img\comment\profile_picture.png" alt=""> 
+            <img class="comment-img" src="/template/img/comment/profile_picture.png" alt=""> 
             <input placeholder="Join the discussion" type="text" class="comment-input"  name="comment">
         </div>
 
