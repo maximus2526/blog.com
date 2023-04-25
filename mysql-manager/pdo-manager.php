@@ -43,11 +43,22 @@
             return $result->fetchColumn();
         }
 
+        public function get_all_data($table) {
+            // Get all data from the table
+            $result = $this->query("SELECT * FROM $table");
+            return $result->fetchAll();
+        }
+
+
         public function get_post_data($value, $post_id) {
             // Get count data in the table
             $result = $this->query("SELECT `$value` FROM `post` where `post_id` = $post_id" );
             return $result->fetchColumn();
         }
+
+
+
+
 
         public function get_comments_count($post_id) {
             // Get count comments in the post

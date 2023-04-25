@@ -1,0 +1,12 @@
+table {
+    display: flex;
+    max-width: 100%;
+  }
+
+.post-value{
+    flex-direction: row;
+    display: block;
+    height: 100px;
+    width: 100px;
+
+}

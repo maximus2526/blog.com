@@ -1,5 +1,6 @@
 <?php
     $post_id = $_GET['post_id']; 
+
 ?>
 
 
@@ -19,9 +20,10 @@
         <div class="comment-container">
             <img class="comment-img" src="/img/comment/profile_picture.png" alt=""> 
             <div class="comment-block">
-                <span class="comment-name"><?= $comment["name"] ?></span>
-                <p class="comment-text"><?= $comment["comment_text"] ?></p>
+                <span class="comment-name"><?php echo $comment["name"] ?></span>
+                <p class="comment-text"><?php echo $comment["comment_text"] ?></p>
                 <a class="comment-reply" href="">REPLY</a>
+                
             </div>
         </div>
 
@@ -32,6 +34,7 @@
 
         <div class="comment-form" id="comment_input">
             <img class="comment-img" src="/img/comment/profile_picture.png" alt=""> 
+            
             <input placeholder="Join the discussion" type="text"  class="comment-input"  name="comment">
         </div>
 
