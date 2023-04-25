@@ -1,9 +1,18 @@
     <?php     
-    // HEADER
-        include 'routes.php';
-        include 'template/static/header.php';
-        include 'mysql-manager/pdo-manager.php';
-        ?>
+    // includes block  
+    include_once __DIR__.'/includes.php';
+    
+
+    // Display header
+    get_header();
+
+    // DB_MANAGER
+    db_manager();
+    $PDO = new Connection();
+    // End includes block
+
+
+    ?>  
     
 
 
@@ -20,11 +29,11 @@
 
     <?php 
     // COMMENT FORM
-        include 'template/forms/comment-form.php';
+        include 'comment-form.php';
     ?>
 
 
     <?php 
     // FOOTER
-        include 'template/static/footer.php';
+        include 'footer.php';
     ?>

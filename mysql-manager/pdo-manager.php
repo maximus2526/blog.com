@@ -1,5 +1,4 @@
 <?php 
-    $config = require 'config.php';
         
     class Connection{
         protected $pdo;
@@ -8,7 +7,7 @@
         protected $password;
         protected $options;
 
-        public function __construct($configFile) {
+        public function __construct($configFile='config.php') {
             $config = include($configFile);
             $this->dsn = $config['dsn'];
             $this->username = $config['username'];
@@ -58,8 +57,16 @@
         }
 
         public function post_comment($post_id, $comment) {
-            $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES (NULL, $post_id, 'admin', '$comment', '".date('Y-m-d')."')";
-            $this->query($sql);
+            $params = [
+                'post_id' => $post_id,
+                'comment' => $comment,
+                'user' => 'admin',
+                'date_time' => date('Y-m-d')
+
+            ];
+            var_dump($params);
+            $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES (NULL, :post_id, :user, :comment, :date_time)";
+            $this->query($sql, $params);
         }
 
         public function get_comments($post_id){
@@ -78,9 +85,7 @@
 
 
     }
-
-    $PDO = new Connection('config.php');
-
+    
 
     ?>
 

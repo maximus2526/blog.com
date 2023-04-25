@@ -5,9 +5,9 @@
                 </div>
                 <div class="footer-social">
                     <p class="footer-text">Follow</p>
-                    <a href="https://facebook.com/"><img src="template/img/icons/facebook.png" alt="" class="footer-social-img"></a>
-                    <a href="https://twitter.com/"><img src="template/img/icons/twitter.png" alt="" class="footer-social-img"></a>
-                    <a href="https://www.instagram.com/"><img src="template/img/icons/instagram.png" alt="" class="footer-social-img"></a>
+                    <a href="https://facebook.com/"><img src="img/icons/facebook.png" alt="" class="footer-social-img"></a>
+                    <a href="https://twitter.com/"><img src="img/icons/twitter.png" alt="" class="footer-social-img"></a>
+                    <a href="https://www.instagram.com/"><img src="img/icons/instagram.png" alt="" class="footer-social-img"></a>
                 </div>
             </div>
     </body>
