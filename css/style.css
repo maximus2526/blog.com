@@ -80,7 +80,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	text-transform: uppercase;
 }
 
-@media screen and (max-width: 755px) 
+@media screen and (max-width: 850px) 
 	{ 
 	.header-logo{
 		margin-left: 0px;
@@ -107,12 +107,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	}
 
 	.header-nav {
-		width: 500px;
 		background: rgb(228, 228, 228);
 		justify-content: space-around;
 		display: flex;
 		align-items: baseline;
-		padding-right: 30px;
+		padding-right: 10px;
 	
 	}
 
@@ -129,6 +128,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 
 .page-title{	
+	text-align: center;
 	color: #626262;
 	font-family: "Playfair Display";
 	font-size: 32px;
@@ -150,11 +150,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 
 .content-img {
-	height: 279px;
 	width: 420px;
 }
-
-
 
 .content-subtitles {
 	padding-top: 32px; 
@@ -188,8 +185,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	margin-top: 79px;
 	margin-bottom: 62px;
 	text-align: center;
-
-
 }
 
 .pagination-btn {
@@ -211,6 +206,61 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	background-color: #e55a62;
 	color: #ffffff;
 }
+
+@media screen and (max-width: 1250px) {
+	.page-title {
+		text-align: center;
+		font-size: 15px;
+	}
+	.content {
+		margin: 25px;
+	}
+	.content-img {
+		width: 100%;
+	}
+	.content-wrapper {
+		margin: -15px -15px;
+	}
+	.content-subtitles {
+		padding: 0px; 
+	}
+	.content-element {
+		padding: 15px 15px;
+		flex: 1 1 50%;
+	}
+
+}
+
+@media screen and (max-width: 500px) {
+	.content {
+		margin: 5px;
+	}
+	.page-title {
+		font-size: medium;
+	}
+	.content-img {
+		width: 100%;
+	}
+	
+
+
+	.content-wrapper {
+		display: flex;
+		margin: 0;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+	}
+	.content-element {
+		padding: 0;
+		flex: 1 1 50%;
+		
+	}
+
+
+}
+
 
 
 /* Styles for post page */
@@ -240,10 +290,6 @@ h2{
 .content-photos{
     max-width: 80%;
     max-height: 80%;
-}
-
-.content{
-    margin-right: 100px;
 }
 
 .content-subtitles{
@@ -351,6 +397,21 @@ h2{
     margin-right: 150px;
 }
 
+@media screen and (max-width: 900px) {
+	.footer-privacy-elem:last-child{
+		margin-left: 5px;
+	}
+	.footer-privacy-elem:first-child {
+		margin-left: 15px;
+	}
+	.footer-social:last-child {
+		margin-right: 15px;
+	}
+	.footer-social-img {
+		margin: 5px;
+	}
+
+}
 
 
 /* Styles for comment form */

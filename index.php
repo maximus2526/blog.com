@@ -1,28 +1,24 @@
-  
+<?php 
+// includes   
+include_once 'includes.php';
 
+// Get functions
 
-  <?php 
+get_functions();
 
-      
-    // includes   
-    include_once 'includes.php';
+// Display header
 
-    // Get functions
+get_header();
 
-    get_functions();
-    
-    // Display header
+// DB_MANAGER
 
-    get_header();
+db_manager();
+$PDO = new Connection();
 
-    // DB_MANAGER
-
-    db_manager();
-    $PDO = new Connection();
-    
-    // CONTENT
 ?>   
 
+
+<!-- CONTENT -->
     <div class="content">
     <h1 class="page-title">Blog</h1>
 

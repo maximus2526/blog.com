@@ -1,21 +1,27 @@
 <?php 
 // Get header block
 function get_header(){
-    include_once 'header.php';
+    include 'header.php';
 }
 
 // Get footer  block
 function get_footer(){
-    include_once 'footer.php';
+    include 'footer.php';
 }
 
 // Get access to functions 
 function get_functions(){
-    include_once 'functions.php';
+    include 'functions.php';
+}
+
+// Get comment form
+function get_comments($PDO){
+    $PDO_obj = $PDO;
+    include 'comment-form.php';
 }
 
 // Create instance for PDO
 function db_manager(){
-    include_once 'mysql-manager/pdo-manager.php';
+    include 'mysql-manager/pdo-manager.php';
 }
 ?>

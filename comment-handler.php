@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle form
     if(isset($comment)){
         $PDO->post_comment($post_id, $comment);
-        header("Location: /page.php?post_id=".$post_id);
+        header("Location: /page.php?post_id=".$post_id."#comment_input");
 
     }
 }

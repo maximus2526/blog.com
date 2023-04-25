@@ -29,11 +29,11 @@
 
     <?php 
     // COMMENT FORM
-        include 'comment-form.php';
+        get_comments($PDO);
     ?>
 
 
     <?php 
     // FOOTER
-        include 'footer.php';
+        get_footer();
     ?>
