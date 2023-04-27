@@ -1,19 +1,17 @@
 <?php 
-// includes   
-include_once 'includes.php';
 
 // Get functions
 
-get_functions();
+include __DIR__.'/includes/functions.php';
 
 // Display header
 
-get_header();
+include __DIR__.'/header.php';
 
 // DB_MANAGER
 
-db_manager();
-$PDO = new Connection();
+include __DIR__.'/includes/pdo-manager.php';
+
 
 ?>   
 
@@ -35,11 +33,11 @@ $PDO = new Connection();
         ?>
             
             <div class="content-element">
-                <img src="<?=$PDO->get_post_data("post_img_path", $data["post_id"]);?>" alt="" class="content-img">
+                <img src="<?=$PDO->get_data("post", "post_img_path", $data["post_id"]);?>" alt="" class="content-img">
                 <p class="content-subtitles">lifestyle</p>
                 <!-- Each post has been assigned a unique post_id -->
-                <a href="page.php?post_id=<?=$data['post_id']?>" class="content-titles"><?=$PDO->get_post_data("post_title", $data["post_id"]);?></a>
-                <p class="content-preview"><?=$PDO->get_post_data("post_short_text", $data["post_id"]);?></p>
+                <a href="page.php?post_id=<?=$data['post_id']?>" class="content-titles"><?=$PDO->get_data("post", "post_title", $data["post_id"]);?></a>
+                <p class="content-preview"><?=$PDO->get_data("post", "post_short_text", $data["post_id"]);?></p>
             </div>
         <?php endforeach; ?>
     </div>
@@ -67,7 +65,7 @@ $PDO = new Connection();
 <?php
 
     // Display footer
-    get_footer();
+    include __DIR__.'/footer.php';
 
     
 ?>

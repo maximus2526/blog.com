@@ -1,30 +1,40 @@
-<link rel="stylesheet" href="css/admin.css">
+
+
 <?php 
-    include "includes.php";
-    db_manager();
-    $db_obj = new Connection();
+
+    include_once __DIR__.'/includes/pdo-manager.php';
+    include_once __DIR__.'/includes/functions.php';
 ?>
+<link rel="stylesheet" href="<?php get_file_path() ?>css/admin.css">
+
 <h1>Admin panel</h1>
 
-<table>
-  <tr>
-    <th>post_id</th>
-    <th>post_img_path</th>
-    <th>post_title</th>
-    <th>post_date</th>
-    <th>post_short_text</th>
-    <th>post_text</th>
-  </tr>
-  <?php
-    foreach($db_obj->get_all_data("post") as $col):   
-  ?>
-  <tr class="post-value">
-    <th><?php echo $col["post_id"]; ?></th>
-    <th><?php echo $col["post_img_path"]; ?></th>
-    <th><?php echo $col["post_title"]; ?></th>
-    <th><?php echo $col["post_date"]; ?></th>
-    <th><?php echo $col["post_short_text"]; ?></th>
-    <th><?php echo $col["post_text"]; ?></th>
-  </tr>
+<div class="add-btn-container">
+    <button class="add-btn" onclick="location.href='add-post.php'">Add Post</button>
+  </div>
+  <div class="table">
+  <div class="names">
+    <div class="cell">post_id</div>
+    <div class="cell">post_img_path</div>
+    <div class="cell">post_title</div>
+    <div class="cell">post_date</div>
+    <div class="cell">post_short_text</div>
+    <div class="cell">post_text</div>
+    <div class="cell">actions</div>
+  </div>
+
+  <?php foreach ($PDO->get_data("post") as $col): ?>
+    <div class="row">
+      <div class="cell"><?php echo $col["post_id"]; ?></div>
+      <div class="cell"><?php echo $col["post_img_path"]; ?></div>
+      <div class="cell"><?php echo $col["post_title"]; ?></div>
+      <div class="cell"><?php echo $col["post_date"]; ?></div>
+      <div class="cell scrollable"><?php echo $col["post_short_text"]; ?></div>
+      <div class="cell scrollable"><?php echo $col["post_text"]; ?></div>
+      <div class="cell actions">
+        <button onclick="location.href='delete-post.php'" class="delete-btn">Delete</button>
+        <button onclick="location.href='edit-post.php'" class="edit-btn">Edit</button>
+      </div>
+    </div>
   <?php endforeach ?>
-</table>
+</div>

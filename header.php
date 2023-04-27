@@ -1,4 +1,4 @@
-
+<?php include_once __DIR__.'/includes/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog title</title>
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="<?php get_file_path() ?>css/style.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 </head>
 

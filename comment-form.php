@@ -1,18 +1,18 @@
 <?php
     $post_id = $_GET['post_id']; 
-
 ?>
 
 
 <div class="comments">
-    <form action=<?php echo "comment-handler.php?post_id={$post_id}" ?> method="post">
+    <form action=<?php echo "includes/comment-handler.php?post_id={$post_id}" ?> method="post">
         <!-- Get count of comments for each post -->
-        <p class="comment-count"><?=$PDO_obj->get_comments_count($post_id)?> COMMENTS</p> 
+        <p class="comment-count"><?=$PDO->get_comments_count($post_id)?> COMMENTS</p> 
         
         <?php
         // Get data from db and display in the form
-        $comments = $PDO_obj->get_comments($post_id);
+        $comments = $PDO->get_comments($post_id);
         if(!$comments):
+            
             echo "<p class='content-text-italic'>There are no comments here. You can be the first!</p><br>";      
         else:
             foreach($comments as $comment):
