@@ -1,13 +1,9 @@
     <?php     
-    // includes block  
-    include_once __DIR__.'/includes.php';
-    
 
     // Display header
-    get_header();
-
+    include __DIR__.'/header.php';
     // DB_MANAGER
-    db_manager();
+    include __DIR__.'/includes/pdo-manager.php';
     $PDO = new Connection();
     // End includes block
 
@@ -20,20 +16,20 @@
         <?php 
         $post_id = $_GET["post_id"];
         ?>
-        <h1><?=$PDO->get_post_data("post_title", $post_id);?></h1>
-        <p class="content-text-italic"><?=$PDO->get_post_data("post_date", $post_id);?></p>
-        <img class="content-photos" src="<?=$PDO->get_post_data("post_img_path", $post_id);?>" alt="">
-        <p class="content-text" id="content"><?=$PDO->get_post_data("post_text", $post_id);?></p> 
+        <h1 class="blog-topic"><?=$PDO->get_data("post", "post_title", $post_id);?></h1>
+        <p class="content-text-italic"><?=$PDO->get_data("post", "post_date", $post_id);?></p>
+        <img class="content-photos" src="<?=$PDO->get_data("post", "post_img_path", $post_id);?>" alt="">
+        <p class="content-text" id="content"><?=$PDO->get_data("post", "post_text", $post_id);?></p> 
     </div>    
 
 
     <?php 
     // COMMENT FORM
-        get_comments($PDO);
+        include __DIR__.'/comment-form.php';
     ?>
 
 
     <?php 
     // FOOTER
-        get_footer();
+        include __DIR__.'/footer.php';
     ?>
