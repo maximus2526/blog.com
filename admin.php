@@ -32,9 +32,10 @@
       <div class="cell scrollable"><?php echo $col["post_short_text"]; ?></div>
       <div class="cell scrollable"><?php echo $col["post_text"]; ?></div>
       <div class="cell actions">
-        <button onclick="location.href='delete-post.php'" class="delete-btn">Delete</button>
-        <button onclick="location.href='edit-post.php'" class="edit-btn">Edit</button>
+        <button onclick="location.href='delete-post.php?post_id=<?php echo $col["post_id"]; ?>'" class="delete-btn">Delete</button>
+        <button onclick="location.href='edit-post.php?post_id=<?php echo $col["post_id"]; ?>'" class="edit-btn">Edit</button>
       </div>
     </div>
+    
   <?php endforeach ?>
 </div>
