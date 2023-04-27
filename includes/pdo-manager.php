@@ -34,6 +34,9 @@
             $this->connect();
             $statement = $this->pdo->prepare($query);
             $statement->execute($params);
+            if($statement->errorInfo()[0] !== '00000'){
+                throw new Exception($statement->errorInfo()[2]);
+            }
             return $statement;
         }
         
@@ -42,7 +45,44 @@
             $result = $this->query("SELECT COUNT(*) FROM $table");
             return $result->fetchColumn();
         }
+        public function add_post($image_path, $post_title, $post_short_text, $post_text) {
+            $params = [
+                'post_img_path' => $image_path,
+                'post_title' => $post_title,
+                'post_short_text' => $post_short_text,
+                'post_text' => $post_text,
+                'post_date' => date('Y-m-d')
 
+            ];
+            $sql = "INSERT INTO `post` (`post_id`, `post_img_path`, `post_title`, `post_short_text`, `post_text`, `post_date` ) VALUES (NULL, :post_img_path, :post_title, :post_short_text, :post_text, :post_date)";
+            $this->query($sql, $params);
+            return $this->pdo->lastInsertId();
+        }
+
+        public function del_post($post_id){
+            $this->query("DELETE FROM `comments` WHERE `post_id` = $post_id");
+            $sql = "DELETE FROM `post` WHERE `post`.`post_id` = $post_id";
+            $this->query($sql);
+        }
+    
+        public function edit_post($post_id, $image_path, $post_title, $post_short_text, $post_text){
+            $params = [
+                'post_id' => $post_id,
+                'post_img_path' => $image_path,
+                'post_title' => $post_title,
+                'post_short_text' => $post_short_text,
+                'post_text' => $post_text,
+                'post_date' => date('Y-m-d')
+
+            ];
+            $sql = "UPDATE `post` SET post_img_path = :post_img_path, post_title = :post_title, post_short_text = :post_short_text, post_text = :post_text, post_date = :post_date WHERE `post`.`post_id` = :post_id";
+            $stmt = $this->query($sql, $params);
+            if ($stmt->rowCount() > 0) {
+                return true; // Обновление прошло успешно
+            } else {
+                return false; // Обновление не удалось
+            }
+        }
         public function get_data($table, $value = NULL ,  $post_id = NULL) {
             // Get all data from the table
             $sql =  "SELECT * FROM $table ";
@@ -78,6 +118,7 @@
             $this->query($sql, $params);
         }
 
+
         public function get_comments($post_id){
             $sql = "SELECT * FROM `comments` where `post_id` = $post_id;";
             $result = $this->query($sql);
@@ -91,6 +132,8 @@
             $result = $this->query($sql);
             return $result->fetchAll();
         }
+
+
 
 
     }
