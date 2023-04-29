@@ -21,9 +21,9 @@
         <a href="/"><img class="header-logo-img"  src="img/logo.png" alt="MINIMO"></a>
     </div>
     <div class="header-nav">
-        <a class="header-nav-elem" href="#">lifestyle</a>
-        <a class="header-nav-elem" href="#">photodiary</a> 
-        <a class="header-nav-elem" href="#">music</a>
-        <a class="header-nav-elem" href="#">travel</a>
+        <a class="header-nav-elem" href="?post_category=lifestyle">lifestyle</a>
+        <a class="header-nav-elem" href="?post_category=photodiary">photodiary</a> 
+        <a class="header-nav-elem" href="?post_category=music">music</a>
+        <a class="header-nav-elem" href="?post_category=travel">travel</a>
     </div>
 </div>

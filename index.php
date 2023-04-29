@@ -1,8 +1,5 @@
 <?php 
 
-// Get functions
-
-include __DIR__.'/includes/functions.php';
 
 // Display header
 
@@ -22,24 +19,28 @@ include __DIR__.'/includes/pdo-manager.php';
 
     <div class="content-wrapper">
         <?php 
-        // Take number of page from buttons
-        if (isset($_GET["page_num"])){
-            $page_num = (int)$_GET["page_num"];
-        }
-        else
-            $page_num = 1;
 
-        foreach($PDO->get_array_paginated(4, $page_num) as $data):  
+        $page_num = get_page_num();
+        $pages_options = [
+            'page_num' => $page_num,
+            'entries_limit' => 4,
+        ];
+        
+        if(is_categoried()){
+            $pages_options['post_category'] = $_GET['post_category'];
+        }
+        foreach($PDO->get_array_paginated($pages_options) as $data):  
         ?>
-            
             <div class="content-element">
-                <img src="<?=$PDO->get_data("post", "post_img_path", $data["post_id"]);?>" alt="" class="content-img">
-                <p class="content-subtitles">lifestyle</p>
+                <img src="<?=$data["post_img_path"]?>" alt="" class="content-img">
+                <p class="content-subtitles"><?=$data["post_category"]?></p>
                 <!-- Each post has been assigned a unique post_id -->
-                <a href="page.php?post_id=<?=$data['post_id']?>" class="content-titles"><?=$PDO->get_data("post", "post_title", $data["post_id"]);?></a>
-                <p class="content-preview"><?=$PDO->get_data("post", "post_short_text", $data["post_id"]);?></p>
+                <a href="page.php?post_id=<?=$data['post_id']?>" class="content-titles"><?=$data["post_title"]?></a>
+                <p class="content-preview"><?=$data["post_short_text"]?></p>
             </div>
-        <?php endforeach; ?>
+        <?php 
+        endforeach; 
+        ?>
     </div>
     </div>
 

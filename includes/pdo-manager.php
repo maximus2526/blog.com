@@ -45,37 +45,41 @@
             $result = $this->query("SELECT COUNT(*) FROM $table");
             return $result->fetchColumn();
         }
-        public function add_post($image_path, $post_title, $post_short_text, $post_text) {
+        public function add_post($image_path, $post_title, $post_short_text, $post_text, $post_category) {
             $params = [
                 'post_img_path' => $image_path,
+                'post_category' => $post_category,
                 'post_title' => $post_title,
                 'post_short_text' => $post_short_text,
                 'post_text' => $post_text,
                 'post_date' => date('Y-m-d')
 
             ];
-            $sql = "INSERT INTO `post` (`post_id`, `post_img_path`, `post_title`, `post_short_text`, `post_text`, `post_date` ) VALUES (NULL, :post_img_path, :post_title, :post_short_text, :post_text, :post_date)";
+            $sql = "INSERT INTO `post` (`post_id`, `post_img_path`, `post_title`, `post_short_text`, `post_text`, `post_date`, `post_category` ) 
+            VALUES (NULL, :post_img_path, :post_title, :post_short_text, :post_text, :post_date, :post_category)";
             $this->query($sql, $params);
             return $this->pdo->lastInsertId();
         }
 
-        public function del_post($post_id){
+        public function del_post(int $post_id){
             $this->query("DELETE FROM `comments` WHERE `post_id` = $post_id");
             $sql = "DELETE FROM `post` WHERE `post`.`post_id` = $post_id";
             $this->query($sql);
         }
     
-        public function edit_post($post_id, $image_path, $post_title, $post_short_text, $post_text){
+        public function edit_post(int $post_id, string $image_path, string $post_title, string $post_short_text, string $post_text, string $post_category){
             $params = [
                 'post_id' => $post_id,
                 'post_img_path' => $image_path,
+                'post_category' => $post_category,
                 'post_title' => $post_title,
                 'post_short_text' => $post_short_text,
                 'post_text' => $post_text,
                 'post_date' => date('Y-m-d')
 
             ];
-            $sql = "UPDATE `post` SET post_img_path = :post_img_path, post_title = :post_title, post_short_text = :post_short_text, post_text = :post_text, post_date = :post_date WHERE `post`.`post_id` = :post_id";
+            $sql = "UPDATE `post` SET post_img_path = :post_img_path, post_title = :post_title, post_short_text = :post_short_text, post_text = :post_text, post_date = :post_date, post_category = :post_category
+            WHERE `post`.`post_id` = :post_id";
             $stmt = $this->query($sql, $params);
             if ($stmt->rowCount() > 0) {
                 return true; // Обновление прошло успешно
@@ -83,18 +87,17 @@
                 return false; // Обновление не удалось
             }
         }
-        public function get_data($table, $value = NULL ,  $post_id = NULL) {
+        public function get_data($table, $value = NULL, $post_id = NULL) {
             // Get all data from the table
-            $sql =  "SELECT * FROM $table ";
+            $sql =  "SELECT * FROM $table";
             if(isset($post_id) and isset($value)){
                 // Get only one post info
                 $sql =  "SELECT $value FROM $table where `post_id` = $post_id";
                 $result = $this->query($sql);
                 return $result->fetchColumn();
             }
-            $result = $this->query($sql);
 
-            return $result->fetchAll();
+            return $this->query($sql)->fetchAll();
         }
 
 
@@ -113,8 +116,8 @@
                 'date_time' => date('Y-m-d')
 
             ];
-            var_dump($params);
-            $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES (NULL, :post_id, :user, :comment, :date_time)";
+            $sql = "INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) 
+            VALUES (NULL, :post_id, :user, :comment, :date_time)";
             $this->query($sql, $params);
         }
 
@@ -125,14 +128,14 @@
             return $result->fetchAll();
         }
 
-        public function get_array_paginated($page_num,  $active_page){
+        public function get_array_paginated($options){
             // Pagination realization
-            $formula = ceil(($active_page-1)*$page_num);
-            $sql = "SELECT * FROM post ORDER BY `post`.`post_id` ASC LIMIT {$page_num} OFFSET {$formula};";
-            $result = $this->query($sql);
-            return $result->fetchAll();
+            $page_num = $options['page_num'];
+            $entries_limit = $options['entries_limit'];
+            $offset = ($page_num - 1)*$entries_limit ;
+            $sql = "SELECT * FROM `post` ORDER BY `post`.`post_id` ASC LIMIT {$entries_limit} OFFSET {$offset};";
+            return $this->query($sql)->fetchAll();
         }
-
 
 
 

@@ -15,6 +15,7 @@
   <div class="table">
   <div class="names">
     <div class="cell">post_id</div>
+    <div class="cell">post_category</div>
     <div class="cell">post_img_path</div>
     <div class="cell">post_title</div>
     <div class="cell">post_date</div>
@@ -26,6 +27,7 @@
   <?php foreach ($PDO->get_data("post") as $col): ?>
     <div class="row">
       <div class="cell"><?php echo $col["post_id"]; ?></div>
+      <div class="cell"><?php echo $col["post_category"]; ?></div>
       <div class="cell"><?php echo $col["post_img_path"]; ?></div>
       <div class="cell"><?php echo $col["post_title"]; ?></div>
       <div class="cell"><?php echo $col["post_date"]; ?></div>
