@@ -45,19 +45,11 @@
             $result = $this->query("SELECT COUNT(*) FROM $table");
             return $result->fetchColumn();
         }
-        public function add_post($image_path, $post_title, $post_short_text, $post_text, $post_category) {
-            $params = [
-                'post_img_path' => $image_path,
-                'post_category' => $post_category,
-                'post_title' => $post_title,
-                'post_short_text' => $post_short_text,
-                'post_text' => $post_text,
-                'post_date' => date('Y-m-d')
-
-            ];
-            $sql = "INSERT INTO `post` (`post_id`, `post_img_path`, `post_title`, `post_short_text`, `post_text`, `post_date`, `post_category` ) 
-            VALUES (NULL, :post_img_path, :post_title, :post_short_text, :post_text, :post_date, :post_category)";
-            $this->query($sql, $params);
+        public function add_post(array $options) {
+            $sql = "INSERT INTO `post` (`post_id`, `post_img_path`,  `post_category`, `post_title`, `post_short_text`, `post_text`, `post_date` ) 
+            VALUES (NULL, :post_img_path, :post_category, :post_title, :post_short_text, :post_text, :post_date)";
+            
+            $this->query($sql, $options);
             return $this->pdo->lastInsertId();
         }
 
@@ -130,12 +122,16 @@
 
         public function get_array_paginated($options){
             // Pagination realization
-            $page_num = $options['page_num'];
-            $entries_limit = $options['entries_limit'];
-            $offset = ($page_num - 1)*$entries_limit ;
-            $sql = "SELECT * FROM `post` ORDER BY `post`.`post_id` ASC LIMIT {$entries_limit} OFFSET {$offset};";
+            $offset = ($options['page_num'] - 1)*$options['entries_limit'] ;
+            $sql = "SELECT * FROM `post` ORDER BY `post`.`post_id` ASC LIMIT {$options['entries_limit']} OFFSET {$offset};";
+            if ($options['post_category']){
+                $post_category = strtoupper($options['post_category']);
+                $sql = "SELECT * FROM `post` WHERE `post`.`post_category` = '{$post_category}' ORDER BY `post`.`post_id` ASC LIMIT {$options['entries_limit']} OFFSET {$offset};";
+            }
+               
             return $this->query($sql)->fetchAll();
         }
+        
 
 
 

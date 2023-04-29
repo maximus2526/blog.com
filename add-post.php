@@ -6,11 +6,7 @@ include __DIR__.'/includes/pdo-manager.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-  $post_id = $_POST['post_id'];
-  $post_title = $_POST['post_title'];
-  $post_short_text = $_POST['post_short_text'];
-  $post_text = $_POST['post_text'];
-  $post_category = $_POST['post_category'];
+
   // img handle
   if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
       $image_name = $_FILES['image']['name'];
@@ -21,15 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   } else {
       die('Error of sending img');
   }
+    $options = [
+    'post_img_path' => $image_path,
+    'post_category' => $_POST['post_category'],
+    'post_title' =>  $_POST['post_title'],
+    'post_short_text' =>  $_POST['post_short_text'],
+    'post_text' =>  $_POST['post_text'],
+    'post_date' => date('Y-m-d')
+
+  ];
   try {
-      $result = $PDO->add_post($image_path, $post_title, $post_short_text, $post_text, $post_category);
+      $result = $PDO->add_post($options);
       if ($result) {
           $message = "Post added successfully!";
       } else {
           $message = "Post add failed!";
       }
   } catch (PDOException $e) {
-      $message = "Error updating post: " . $e->getMessage();
+      $message = "Error adding post: " . $e->getMessage();
   }
 }
 ?>
