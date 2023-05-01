@@ -1,4 +1,4 @@
-<?php include_once 'functions.php'; ?>
+<?php include_once 'helper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
