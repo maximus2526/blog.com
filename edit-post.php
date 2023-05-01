@@ -16,12 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   } else {
       die('Error of sending img');
   }
-  $post_id = $_GET['post_id'];
-  $post_title = $_POST['post_title'];
-  $post_short_text = $_POST['post_short_text'];
-  $post_text = $_POST['post_text'];
-  $post_category = $_POST['post_category'];
-  $PDO->edit_post($post_id, $image_path, $post_title, $post_short_text, $post_text, $post_category);
+  $params = [
+    'post_img_path' => $image_path,
+    'post_title' => $_POST['post_title'],
+    'post_short_text' => $_POST['post_short_text'],
+    'post_text' => $_POST['post_text'],
+    'post_category' => $_POST['post_category'],
+    'post_date' => date('Y-m-d'),
+    'post_id' => $_GET['post_id'],
+  ];
+
+  $PDO->edit_post($params);
 }
       
 ?>

@@ -59,20 +59,10 @@
             $this->query($sql);
         }
     
-        public function edit_post(int $post_id, string $image_path, string $post_title, string $post_short_text, string $post_text, string $post_category){
-            $params = [
-                'post_id' => $post_id,
-                'post_img_path' => $image_path,
-                'post_category' => $post_category,
-                'post_title' => $post_title,
-                'post_short_text' => $post_short_text,
-                'post_text' => $post_text,
-                'post_date' => date('Y-m-d')
-
-            ];
+        public function edit_post(array $options){
             $sql = "UPDATE `post` SET post_img_path = :post_img_path, post_title = :post_title, post_short_text = :post_short_text, post_text = :post_text, post_date = :post_date, post_category = :post_category
             WHERE `post`.`post_id` = :post_id";
-            $stmt = $this->query($sql, $params);
+            $stmt = $this->query($sql, $options);
             if ($stmt->rowCount() > 0) {
                 return true; // Обновление прошло успешно
             } else {
@@ -84,7 +74,7 @@
             $sql =  "SELECT * FROM $table";
             if(isset($post_id) and isset($value)){
                 // Get only one post info
-                $sql =  "SELECT $value FROM $table where `post_id` = $post_id";
+                $sql =  $sql." where `post_id` = $post_id";
                 $result = $this->query($sql);
                 return $result->fetchColumn();
             }
