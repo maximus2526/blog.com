@@ -1,15 +1,8 @@
 <?php 
-
-
-// Display header
-
-include __DIR__.'/header.php';
-
 // DB_MANAGER
-
-include __DIR__.'/includes/pdo-manager.php';
-
-
+include_once 'includes/pdo-manager.php';
+// Display header
+include_once 'includes/header.php';
 ?>   
 
 
@@ -38,7 +31,7 @@ include __DIR__.'/includes/pdo-manager.php';
 <?php
 
     // Display footer
-    include __DIR__.'/footer.php';
+    include 'includes/footer.php';
 
     
 ?>

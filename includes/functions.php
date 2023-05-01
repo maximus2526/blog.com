@@ -1,8 +1,11 @@
 <?php
     function get_file_path(){
-            return __DIR__;
+            return $_SERVER['DOCUMENT_ROOT'];
         }
-    
+
+    function get_url(){
+        return 'http://'.$_SERVER['HTTP_HOST'].'/';
+    }
     function get_page_num(){
         // Take number of page from buttons
         if (isset($_GET["page_num"]))

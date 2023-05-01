@@ -1,17 +1,18 @@
 
 <?php 
-include __DIR__.'/header.php';
-include __DIR__.'/includes/pdo-manager.php';
+include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'header.php';
+include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL); 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
     $image_name = $_FILES['image']['name'];
-    $image_path ='img/blog-img/' . $image_name;
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $image_path)) {
+    $image_path ='/img/blog-img/' . $image_name;
+    $full_image_path = get_file_path() . $image_path;
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path)) {
         echo "Image uploaded successfully!";
     } else {
-        die(var_dump($_FILES)."Error uploading image!".$image_name.$image_path);
+        die(var_dump($_FILES)."Error uploading image!".$image_name.$full_image_path);
     }
   } else {
       die('Error of sending img');
@@ -41,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   <div>
     <label for="post_category">Category:</label>
     <select name="post_category">
-      <option value="1">LIFESTYLE</option>
-      <option value="2">PHOTODIARY</option>
-      <option value="3">MUSIC</option>
-      <option value="4">TRAVEL</option>
+    <option value="LIFESTYLE">LIFESTYLE</option>
+    <option value="PHOTODIARY">PHOTODIARY</option>
+    <option value="MUSIC">MUSIC</option>
+    <option value="TRAVEL">TRAVEL</option>
     </select>
   </div>
   <div>
