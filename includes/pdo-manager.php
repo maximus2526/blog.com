@@ -74,7 +74,7 @@
             $sql =  "SELECT * FROM $table";
             if(isset($post_id) and isset($value)){
                 // Get only one post info
-                $sql =  $sql." where `post_id` = $post_id";
+                $sql = "SELECT $value FROM $table where `post_id` = $post_id";
                 $result = $this->query($sql);
                 return $result->fetchColumn();
             }
