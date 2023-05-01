@@ -1,7 +1,7 @@
 
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'header.php';
-include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
+include_once '../includes/header.php';
+include_once '../includes/pdo-manager.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL); 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){

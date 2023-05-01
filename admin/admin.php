@@ -1,8 +1,8 @@
 
 
 <?php 
-    include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
-    include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'helper.php';
+include_once '../includes/header.php';
+include_once '../includes/pdo-manager.php';
 ?>
 <link rel="stylesheet" href="<?php get_url() ?>css/admin.css">
 
