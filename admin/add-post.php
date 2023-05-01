@@ -1,7 +1,7 @@
 
 <?php 
-include __DIR__.'/header.php';
-include __DIR__.'/includes/pdo-manager.php';
+include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'header.php';
+include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
 
 
 
@@ -10,9 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   // img handle
   if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
       $image_name = $_FILES['image']['name'];
-      $image_path ='img/blog-img/' . $image_name;
-      if (!move_uploaded_file($_FILES['image']['tmp_name'], $image_path)) {
-          die(var_dump($_FILES)."Error uploading image!".$image_name.$image_path);
+      $image_path = '/img/blog-img/' . $image_name;
+      $full_image_path = get_file_path() . $image_path;
+      if (!move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path)) {
+          die(var_dump($_FILES)."Error uploading image!".$image_name.$full_image_path);
       }
   } else {
       die('Error of sending img');

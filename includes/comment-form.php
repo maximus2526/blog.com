@@ -12,7 +12,6 @@
         // Get data from db and display in the form
         $comments = $PDO->get_comments($post_id);
         if(!$comments):
-            
             echo "<p class='content-text-italic'>There are no comments here. You can be the first!</p><br>";      
         else:
             foreach($comments as $comment):
@@ -28,8 +27,8 @@
         </div>
 
         <?php
-                endforeach;
-            endif; 
+            endforeach;
+        endif; 
         ?>
 
         <div class="comment-form" id="comment_input">
