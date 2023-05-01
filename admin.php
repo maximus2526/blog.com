@@ -15,6 +15,7 @@
   <div class="table">
   <div class="names">
     <div class="cell">post_id</div>
+    <div class="cell">post_category</div>
     <div class="cell">post_img_path</div>
     <div class="cell">post_title</div>
     <div class="cell">post_date</div>
@@ -26,15 +27,17 @@
   <?php foreach ($PDO->get_data("post") as $col): ?>
     <div class="row">
       <div class="cell"><?php echo $col["post_id"]; ?></div>
+      <div class="cell"><?php echo $col["post_category"]; ?></div>
       <div class="cell"><?php echo $col["post_img_path"]; ?></div>
       <div class="cell"><?php echo $col["post_title"]; ?></div>
       <div class="cell"><?php echo $col["post_date"]; ?></div>
       <div class="cell scrollable"><?php echo $col["post_short_text"]; ?></div>
       <div class="cell scrollable"><?php echo $col["post_text"]; ?></div>
       <div class="cell actions">
-        <button onclick="location.href='delete-post.php'" class="delete-btn">Delete</button>
-        <button onclick="location.href='edit-post.php'" class="edit-btn">Edit</button>
+        <button onclick="location.href='delete-post.php?post_id=<?php echo $col["post_id"]; ?>'" class="delete-btn">Delete</button>
+        <button onclick="location.href='edit-post.php?post_id=<?php echo $col["post_id"]; ?>'" class="edit-btn">Edit</button>
       </div>
     </div>
+    
   <?php endforeach ?>
 </div>
