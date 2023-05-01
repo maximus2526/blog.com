@@ -2,7 +2,7 @@
 
 <?php 
     include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
-    include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'functions.php';
+    include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'helper.php';
 ?>
 <link rel="stylesheet" href="<?php get_url() ?>css/admin.css">
 
