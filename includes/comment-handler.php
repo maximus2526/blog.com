@@ -1,6 +1,5 @@
 <?php
-include __DIR__.'/pdo-manager.php';
-$PDO = new Connection();
+include 'functions.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if post_id is valid
     if (!isset($_GET['post_id']) || !ctype_digit($_GET['post_id'])) {

@@ -1,24 +1,14 @@
 
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'header.php';
-include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
-ini_set('display_errors', 1);
-error_reporting(E_ALL); 
+include_once '../includes/header.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-  if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
-    $image_name = $_FILES['image']['name'];
-    $image_path ='/img/blog-img/' . $image_name;
-    $full_image_path = get_file_path() . $image_path;
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path)) {
-        echo "Image uploaded successfully!";
-    } else {
-        die(var_dump($_FILES)."Error uploading image!".$image_name.$full_image_path);
-    }
-  } else {
-      die('Error of sending img');
-  }
+  // img handle
+  $img_path = get_img_path($_FILES['image']);
+  $img_err_message = validate_img($_FILES['image'], $img_path);
+  
   $params = [
-    'post_img_path' => $image_path,
+    'post_img_path' => $img_path,
     'post_title' => $_POST['post_title'],
     'post_short_text' => $_POST['post_short_text'],
     'post_text' => $_POST['post_text'],
@@ -27,9 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     'post_id' => $_GET['post_id'],
   ];
 
-  $PDO->edit_post($params);
+  $message = post_updating_msg($params, $PDO);
 }
-      
 ?>
 
 <link rel="stylesheet" href="<?php get_file_path(); ?>/css/admin.css">
@@ -61,4 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     <textarea id="post_text" name="post_text" required></textarea>
   </div>
   <button type="submit">Update</button>
+  <div class='error'>
+    <?php 
+      if ($_SERVER['REQUEST_METHOD'] === 'POST')
+        echo $message.' '.$img_err_message;
+    ?>
+  </div>
 </form>

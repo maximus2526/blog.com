@@ -215,7 +215,10 @@ h6 {
 
 /* Styles for post page */
 
-
+.blog-topic{
+    margin: 20px;
+    font-size: 23px;
+}
 .content-photos {
     max-width: 100%;
 }
@@ -402,8 +405,11 @@ h6 {
 }
 
 @media screen and (max-width: 768px) {
+    .header-logo {
+        display: none;
+    }
     .header-nav {
-        width: 70%;
+        width: 100%;
     }
     .container{
         margin: 0 auto;
@@ -418,5 +424,18 @@ h6 {
         flex: 0 0 100%;
         flex-basis: 100%;
     }
-
+    .footer-privacy-elem:last-child {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .footer-social-img {
+        margin: 5px;
+    }
+    .footer-text {
+        font-size: 12px;
+    }
+    .footer-privacy-elem {
+        font-size: 12px;
+    }
+    
 }

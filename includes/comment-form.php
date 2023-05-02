@@ -6,7 +6,7 @@
 <div class="comments">
     <form action=<?php echo "includes/comment-handler.php?post_id={$post_id}" ?> method="post">
         <!-- Get count of comments for each post -->
-        <p class="comment-count"><?=$PDO->get_comments_count($post_id)?> COMMENTS</p> 
+        <p class="comment-count"><?php echo count($PDO->get_comments($post_id)) ?> COMMENTS</p> 
         
         <?php
         // Get data from db and display in the form

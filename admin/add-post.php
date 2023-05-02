@@ -1,25 +1,19 @@
 
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'header.php';
-include_once $_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR .'includes' . DIRECTORY_SEPARATOR . 'pdo-manager.php';
+include_once '../includes/header.php';
+
+
 
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   // img handle
-  if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
-      $image_name = $_FILES['image']['name'];
-      $image_path = '/img/blog-img/' . $image_name;
-      $full_image_path = get_file_path() . $image_path;
-      if (!move_uploaded_file($_FILES['image']['tmp_name'], $full_image_path)) {
-          die(var_dump($_FILES)."Error uploading image!".$image_name.$full_image_path);
-      }
-  } else {
-      die('Error of sending img');
-  }
-    $options = [
-    'post_img_path' => $image_path,
+  $img_path = get_img_path($_FILES['image']);
+  $img_err_message = validate_img($_FILES['image'], $img_path);
+  
+  $options = [
+    'post_img_path' => $img_path,
     'post_category' => $_POST['post_category'],
     'post_title' =>  $_POST['post_title'],
     'post_short_text' =>  $_POST['post_short_text'],
@@ -27,16 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     'post_date' => date('Y-m-d')
 
   ];
-  try {
-      $result = $PDO->add_post($options);
-      if ($result) {
-          $message = "Post added successfully!";
-      } else {
-          $message = "Post add failed!";
-      }
-  } catch (PDOException $e) {
-      $message = "Error adding post: " . $e->getMessage();
-  }
+  $message = post_adding_msg($options, $PDO);
 }
 ?>
 
@@ -72,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   <div class='error'>
     <?php 
       if ($_SERVER['REQUEST_METHOD'] === 'POST')
-        echo $message;
+        echo $message.' '.$img_err_message;
     ?>
   </div>
 </form>
