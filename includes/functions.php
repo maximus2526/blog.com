@@ -4,14 +4,16 @@ include_once 'pdo-manager.php';
 $PDO = new Connection;
 
 function validate_img($image_obj, $img_path){
+    $max_file_size = 1024*3; // 3 mb
+    $file_path = get_file_path().$img_path;
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if ($image_obj['error'] === UPLOAD_ERR_OK) {
-          if (move_uploaded_file($_FILES['image']['tmp_name'],  get_file_path().$img_path)) {
+        if ($image_obj['error'] === UPLOAD_ERR_OK and (filesize($file_path) < $max_file_size)) { 
+          if (move_uploaded_file($_FILES['image']['tmp_name'],  $file_path)) {
               return "Image uploaded successfully!";
           } else 
-              return "Error uploading image!";
+              return "Error uploading image! ";
         } else 
-            return 'Error of sending img'; 
+            return "Error of sending img. Don't use img bigger then 3mb!"; 
         }
 }
 

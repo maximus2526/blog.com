@@ -6,10 +6,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Invalid post_id";
         exit;
     }
-    $post_id = $_GET['post_id'];
+    $post_id = (int)$_GET['post_id'];
 
     // Check if comment is valid
-    $comment = trim($_POST["comment"]);
+    $comment =  htmlspecialchars(trim($_POST["comment"]));
     if (empty($comment)) {
         echo "Comment is empty";
         exit;

@@ -6,7 +6,7 @@
   for ($page_num = 1; $page_num <= $num_pages; $page_num++):
     // Select active button for custom styles
     $btn_class = 'pagination-btn-active';
-    if ($page_num != $_GET['page_num']) {
+    if ($page_num != (int)$_GET['page_num']) {
       $btn_class = 'pagination-btn';
     }
   ?>

@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   $img_err_message = validate_img($_FILES['image'], $img_path);
   
   $options = [
-    'post_img_path' => $img_path,
-    'post_category' => $_POST['post_category'],
-    'post_title' =>  $_POST['post_title'],
-    'post_short_text' =>  $_POST['post_short_text'],
-    'post_text' =>  $_POST['post_text'],
+    'post_img_path' => htmlspecialchars($img_path),
+    'post_category' => htmlspecialchars($_POST['post_category']),
+    'post_title' =>  htmlspecialchars($_POST['post_title']),
+    'post_short_text' =>  htmlspecialchars($_POST['post_short_text']),
+    'post_text' =>  htmlspecialchars($_POST['post_text']),
     'post_date' => date('Y-m-d')
 
   ];
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   <div>
     <label for="image">Image:</label>
     <input type="file" id="image" name="image" accept="image/*" required>
+    <?php echo $img_err_message ?>
   </div>
   <div>
     <label for="post_short_text">Short Text:</label>
@@ -57,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   <div class='error'>
     <?php 
       if ($_SERVER['REQUEST_METHOD'] === 'POST')
-        echo $message.' '.$img_err_message;
+        echo $message;
     ?>
   </div>
 </form>

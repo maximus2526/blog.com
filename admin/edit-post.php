@@ -8,13 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   $img_err_message = validate_img($_FILES['image'], $img_path);
   
   $params = [
-    'post_img_path' => $img_path,
-    'post_title' => $_POST['post_title'],
-    'post_short_text' => $_POST['post_short_text'],
-    'post_text' => $_POST['post_text'],
-    'post_category' => $_POST['post_category'],
+    'post_img_path' => htmlspecialchars($img_path),
+    'post_title' => htmlspecialchars($_POST['post_title']),
+    'post_short_text' => htmlspecialchars($_POST['post_short_text']),
+    'post_text' => htmlspecialchars($_POST['post_text']),
+    'post_category' => htmlspecialchars($_POST['post_category']),
     'post_date' => date('Y-m-d'),
-    'post_id' => $_GET['post_id'],
+    'post_id' => (int)$_GET['post_id'],
   ];
 
   $message = post_updating_msg($params, $PDO);

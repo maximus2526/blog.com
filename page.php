@@ -13,7 +13,7 @@
 
     <div class="content">
         <?php 
-        $post_id = $_GET["post_id"];
+        $post_id = (int)$_GET["post_id"];
 
         ?>
         <h1 class="blog-topic"><?php echo $PDO->get_post($post_id)['post_title'];?></h1>
