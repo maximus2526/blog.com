@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     'post_date' => date('Y-m-d'),
     'post_id' => (int)$_GET['post_id'],
   ];
-
+  
   
   $message = post_updating_msg($params, $PDO);
 }
