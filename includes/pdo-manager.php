@@ -40,23 +40,25 @@
             return $statement;
         }
         
-        public function get_entries_count($table) {
+        public function get_pages_count() {
             // Get count data in the table
-            $result = $this->query("SELECT COUNT(*) FROM $table");
+            $result = $this->query("SELECT COUNT(*) FROM post");
             return $result->fetchColumn();
         }
         public function add_post(array $options) {
             $sql = "INSERT INTO `post` (`post_id`, `post_img_path`,  `post_category`, `post_title`, `post_short_text`, `post_text`, `post_date` ) 
             VALUES (NULL, :post_img_path, :post_category, :post_title, :post_short_text, :post_text, :post_date)";
-            
             $this->query($sql, $options);
             return $this->pdo->lastInsertId();
         }
 
+
         public function del_post(int $post_id){
-            $this->query("DELETE FROM `comments` WHERE `post_id` = $post_id");
-            $sql = "DELETE FROM `post` WHERE `post`.`post_id` = $post_id";
-            $this->query($sql);
+            $options = [
+                'post_id' => $post_id,
+            ];
+            $this->query("DELETE FROM `comments` WHERE `post_id` = :post_id", $options);
+            $this->query("DELETE FROM `post` WHERE `post`.`post_id` = :post_id", $options);
         }
     
         public function edit_post(array $options){
@@ -64,30 +66,15 @@
             WHERE `post`.`post_id` = :post_id";
             $stmt = $this->query($sql, $options);
             if ($stmt->rowCount() > 0) {
-                return true; // Обновление прошло успешно
+                return true; // Updated
             } else {
-                return false; // Обновление не удалось
+                return false; // Failed
             }
         }
-        public function get_data($table, $value = NULL, $post_id = NULL) {
+        public function get_post(int $post_id) {
             // Get all data from the table
-            $sql =  "SELECT * FROM $table";
-            if(isset($post_id) and isset($value)){
-                // Get only one post info
-                $sql = "SELECT $value FROM $table where `post_id` = $post_id";
-                $result = $this->query($sql);
-                return $result->fetchColumn();
-            }
-
-            return $this->query($sql)->fetchAll();
-        }
-
-
-        public function get_comments_count($post_id) {
-            // Get count comments in the post
-            $sql = "SELECT COUNT(*) FROM `blogdb`.`comments` WHERE `post_id` = {$post_id} ORDER BY `post_id` ASC;";
-            $result = $this->query($sql);
-            return $result->fetchColumn();
+            $sql =  "SELECT * FROM `post` WHERE `post_id` = '$post_id' ";
+            return $this->query($sql)->fetchAll()[0];
         }
 
         public function post_comment($post_id, $comment) {
@@ -110,7 +97,7 @@
             return $result->fetchAll();
         }
 
-        public function get_array_paginated($options){
+        public function get_pages_paginated($options){
             // Pagination realization
             $offset = ($options['page_num'] - 1)*$options['entries_limit'] ;
             $sql = "SELECT * FROM `post` ORDER BY `post`.`post_id` ASC LIMIT {$options['entries_limit']} OFFSET {$offset};";
@@ -127,7 +114,7 @@
 
     }
     
-    $PDO = new Connection;
+
 
     ?>
 

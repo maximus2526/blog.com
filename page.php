@@ -3,7 +3,7 @@
     // Display header
     include 'includes/header.php';
     // DB_MANAGER
-    include_once 'includes/pdo-manager.php';
+    include_once 'includes/functions.php';
     // End includes block
 
 
@@ -14,11 +14,12 @@
     <div class="content">
         <?php 
         $post_id = $_GET["post_id"];
+
         ?>
-        <h1 class="blog-topic"><?=$PDO->get_data("post", "post_title", $post_id);?></h1>
-        <p class="content-text-italic"><?=$PDO->get_data("post", "post_date", $post_id);?></p>
-        <img class="content-photos" src="<?=$PDO->get_data("post", "post_img_path", $post_id);?>" alt="">
-        <p class="content-text"><?=$PDO->get_data("post", "post_text", $post_id);?></p> 
+        <h1 class="blog-topic"><?php echo $PDO->get_post($post_id)['post_title'];?></h1>
+        <p class="content-text-italic"><?php echo $PDO->get_post($post_id)['post_date'];?></p>
+        <img class="content-photos" src="<?php echo $PDO->get_post($post_id)['post_img_path'];?>" alt="">
+        <p class="content-text"><?php echo $PDO->get_post($post_id)['post_text'];?></p> 
     </div>    
 
 

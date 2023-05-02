@@ -1,6 +1,6 @@
 <?php 
 // DB_MANAGER
-include_once 'includes/pdo-manager.php';
+include_once 'includes/functions.php';
 // Display header
 include_once 'includes/header.php';
 ?>   
@@ -10,7 +10,7 @@ include_once 'includes/header.php';
 <div class="content">
   <h1 class="page-title">Blog</h1>
   <div class="content-wrapper">
-    <?php include 'includes/main-data.php'; ?>
+    <?php include 'includes/pagination-call.php'; ?>
     <?php foreach ($data as $post): ?>
       <div class="content-element">
         <img src="<?= $post["post_img_path"] ?>" alt="" class="content-img">
@@ -24,7 +24,10 @@ include_once 'includes/header.php';
 </div>
 
 <div class="pagination">
-  <?php include 'includes/pagination.php'; ?>
+  <?php 
+  $how_many_pages = 4; // Following to pagination.php
+  include 'includes/pagination.php'; 
+  ?>
 </div>
 
 

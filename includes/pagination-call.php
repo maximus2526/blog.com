@@ -9,5 +9,5 @@ if (is_categoried()) {
   $pages_options['post_category'] = $_GET['post_category'];
 }
 
-$data = $PDO->get_array_paginated($pages_options);
+$data = $PDO->get_pages_paginated($pages_options);
 ?>

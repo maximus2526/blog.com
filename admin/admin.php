@@ -1,8 +1,7 @@
-
-
 <?php 
 include_once '../includes/header.php';
-include_once '../includes/pdo-manager.php';
+
+
 ?>
 <link rel="stylesheet" href="<?php get_url() ?>css/admin.css">
 
@@ -22,8 +21,14 @@ include_once '../includes/pdo-manager.php';
     <div class="cell">post_text</div>
     <div class="cell">actions</div>
   </div>
-
-  <?php foreach ($PDO->get_data("post") as $col): ?>
+  <?php 
+    $page_num = get_page_num();
+    $pages_options = [
+    'page_num' => $page_num,
+    'entries_limit' => 10,
+    ];
+  ?>
+  <?php foreach ($PDO->get_pages_paginated($pages_options) as $col): ?>
     <div class="row">
       <div class="cell"><?php echo $col["post_id"]; ?></div>
       <div class="cell"><?php echo $col["post_category"]; ?></div>
@@ -39,4 +44,11 @@ include_once '../includes/pdo-manager.php';
     </div>
     
   <?php endforeach ?>
+  <div class="pagination">
+    
+    <?php 
+    $how_many_pages = 10; // Following to pagination.php
+    include '../includes/pagination.php'; 
+    ?>
+  </div>;
 </div>
