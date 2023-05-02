@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     'post_id' => (int)$_GET['post_id'],
   ];
 
+  
   $message = post_updating_msg($params, $PDO);
 }
 ?>
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form class="form" action="" method="post" enctype="multipart/form-data">
   <div>
     <label for="post_title">Post Title:</label>
-    <input type="text" id="post_title" name="post_title" required>
+    <input type="text" id="post_title" name="post_title" value="<?php echo $PDO->get_post($_GET['post_id'])['post_title']  ?>" required>
   </div>
   <div>
     <label for="post_category">Category:</label>
@@ -39,15 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   </div>
   <div>
     <label for="image">Image:</label>
-    <input type="file" id="image" name="image" accept="image/*" required>
+    <input type="file" id="image" name="image" accept="image/*">
   </div>
   <div>
     <label for="post_short_text">Short Text:</label>
-    <input type="text" id="post_short_text" name="post_short_text" required>
+    <input type="text" id="post_short_text" name="post_short_text" value="<?php echo $PDO->get_post($_GET['post_id'])['post_short_text']?>" required>
   </div>
   <div>
+    
     <label for="post_text">Text:</label>
-    <textarea id="post_text" name="post_text" required></textarea>
+    <textarea id="post_text" name="post_text" required><?php echo $PDO->get_post($_GET['post_id'])['post_text'] ?></textarea>
   </div>
   <button type="submit">Update</button>
   <div class='error'>

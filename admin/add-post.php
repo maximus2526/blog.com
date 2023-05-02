@@ -21,11 +21,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     'post_date' => date('Y-m-d')
 
   ];
-  $message = post_adding_msg($options, $PDO);
+  
+  if ($img_err_message == "Image uploaded successfully!") {
+    foreach ($options as $field) {
+        if (empty($field)) {
+            $message = "Please fill out all fields!";
+            break;
+        }
+    }
+
+    if (!$message) {
+        $message = post_adding_msg($options, $PDO);
+    }
+  } 
 }
 ?>
 
-<link rel="stylesheet" href="<?php get_file_path(); ?>/css/admin.css">
 
 <form class="form" action="" method="post" enctype="multipart/form-data">
   <div>

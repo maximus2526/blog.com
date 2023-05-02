@@ -29,7 +29,7 @@
             }
 
         }
-        protected function query($query, $params = []) {
+        protected function query(string $query, array $params = []) {
             // Query handler for other methods
             $this->connect();
             $statement = $this->pdo->prepare($query);
@@ -40,11 +40,7 @@
             return $statement;
         }
         
-        public function get_pages_count() {
-            // Get count data in the table
-            $result = $this->query("SELECT COUNT(*) FROM post");
-            return $result->fetchColumn();
-        }
+
         public function add_post(array $options) {
             $sql = "INSERT INTO `post` (`post_id`, `post_img_path`,  `post_category`, `post_title`, `post_short_text`, `post_text`, `post_date` ) 
             VALUES (NULL, :post_img_path, :post_category, :post_title, :post_short_text, :post_text, :post_date)";
@@ -77,7 +73,7 @@
             return $this->query($sql)->fetchAll()[0];
         }
 
-        public function post_comment($post_id, $comment) {
+        public function post_comment(int $post_id, string $comment) {
             $params = [
                 'post_id' => $post_id,
                 'comment' => $comment,
@@ -91,13 +87,13 @@
         }
 
 
-        public function get_comments($post_id){
+        public function get_comments(int $post_id){
             $sql = "SELECT * FROM `comments` where `post_id` = $post_id;";
             $result = $this->query($sql);
             return $result->fetchAll();
         }
 
-        public function get_pages_paginated($options){
+        public function get_pages_paginated(array $options){
             // Pagination realization
             $offset = ($options['page_num'] - 1)*$options['entries_limit'] ;
             $sql = "SELECT * FROM `post` ORDER BY `post`.`post_id` ASC LIMIT {$options['entries_limit']} OFFSET {$offset};";
@@ -109,7 +105,11 @@
             return $this->query($sql)->fetchAll();
         }
         
-
+        public function get_pages_count() {
+            // Get count data in the table
+            $result = $this->query("SELECT COUNT(*) FROM post");
+            return $result->fetchColumn();
+        }
 
 
     }

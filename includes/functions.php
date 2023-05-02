@@ -3,21 +3,37 @@ include_once 'pdo-manager.php';
 // Created pdo object
 $PDO = new Connection;
 
-function validate_img($image_obj, $img_path){
-    $max_file_size = 1024*3; // 3 mb
+function validate_img(array $image_obj, string $img_path){
+    $max_file_size = 1024*1024*3; // 3 MB in bytes
+    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
     $file_path = get_file_path().$img_path;
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if ($image_obj['error'] === UPLOAD_ERR_OK and (filesize($file_path) < $max_file_size)) { 
-          if (move_uploaded_file($_FILES['image']['tmp_name'],  $file_path)) {
-              return "Image uploaded successfully!";
-          } else 
-              return "Error uploading image! ";
-        } else 
-            return "Error of sending img. Don't use img bigger then 3mb!"; 
-        }
+
+    if (!isset($image_obj['error']) || is_array($image_obj['error'])) {
+        return "Invalid parameters.";
+    }
+
+    if ($image_obj['error'] !== UPLOAD_ERR_OK) {
+        return "Error uploading image.";
+    }
+
+    $file_size = filesize($_FILES['image']['tmp_name']);
+    if ($file_size > $max_file_size) {
+        return "File size exceeds maximum allowed limit.";
+    }
+
+    $file_extension = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+    if (!in_array($file_extension, $allowed_extensions)) {
+        return "Invalid file type.";
+    }
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'],  $file_path)) {
+        return "Image uploaded successfully!";
+    } else {
+        return "Error uploading image!";
+    }
 }
 
-function post_adding_msg($options, $PDO){
+function post_adding_msg(array $options, Connection $PDO){
     // Sending and validating post
     try {
         $result = $PDO->add_post($options);
@@ -30,7 +46,7 @@ function post_adding_msg($options, $PDO){
     }
   }
 
-function post_updating_msg($options, $PDO){
+function post_updating_msg(array $options, Connection $PDO){
     // Updating and validating post
     try {
         $result = $PDO->edit_post($options);
