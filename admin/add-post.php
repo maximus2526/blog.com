@@ -5,13 +5,15 @@ include_once '../includes/header.php';
 
 
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-
   // img handle
   $img_path = get_img_path($_FILES['image']);
   $img_err_message = validate_img($_FILES['image'], $img_path);
-  
+
+
+
+
+
   $options = [
     'post_img_path' => htmlspecialchars($img_path),
     'post_category' => htmlspecialchars($_POST['post_category']),
@@ -22,16 +24,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   ];
   
+
+
   if ($img_err_message == "Image uploaded successfully!") {
+    $errors = array();
     foreach ($options as $field) {
-        if (empty($field)) {
-            $message = "Please fill out all fields!";
+        if (empty($field) || !isset($field)) {
+            $errors[] = "Please fill out all fields!";
             break;
         }
     }
 
-    if (!$message) {
-        $message = post_adding_msg($options, $PDO);
+      try {
+        if (empty($errors)){
+          $PDO->add_post($options);
+          $message = "Post added successfully!";
+        }
+
+    } catch (PDOException $e) {
+        $message = "Error adding post: " . $e->getMessage();
     }
   } 
 }
@@ -70,6 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     <?php 
       if ($_SERVER['REQUEST_METHOD'] === 'POST')
         echo $message;
+        if ($errors){
+          foreach ($errors as $error){
+            echo $error . "<br>";
+          }
+        }
+
     ?>
   </div>
 </form>

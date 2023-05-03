@@ -33,18 +33,7 @@ function validate_img(array $image_obj, string $img_path){
     }
 }
 
-function post_adding_msg(array $options, Connection $PDO){
-    // Sending and validating post
-    try {
-        $result = $PDO->add_post($options);
-        if ($result) 
-            return "Post added successfully!";
-        else
-            return "Post add failed!";
-    } catch (PDOException $e) {
-        return "Error adding post: " . $e->getMessage();
-    }
-  }
+
 
 function post_updating_msg(array $options, Connection $PDO){
     // Updating and validating post
