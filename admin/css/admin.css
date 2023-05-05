@@ -1,6 +1,7 @@
 .table {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .names {
@@ -19,6 +20,7 @@
   align-items: center;
   padding: 10px;
   border: 1px solid #ddd;
+  width: 100%;
 }
 
 .cell {

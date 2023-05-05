@@ -7,18 +7,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   $img_path = get_img_path($_FILES['image']);
   $img_err_message = validate_img($_FILES['image'], $img_path);
   
-  $params = [
-    'post_img_path' => $img_path,
-    'post_title' => $_POST['post_title'],
-    'post_short_text' => $_POST['post_short_text'],
-    'post_text' => $_POST['post_text'],
-    'post_category' => $_POST['post_category'],
+  $options = [
+    'post_img_path' => htmlspecialchars($img_path),
+    'post_title' => htmlspecialchars($_POST['post_title']),
+    'post_short_text' => htmlspecialchars($_POST['post_short_text']),
+    'post_text' => htmlspecialchars($_POST['post_text']),
+    'post_category' => htmlspecialchars($_POST['post_category']),
     'post_date' => date('Y-m-d'),
-    'post_id' => $_GET['post_id'],
+    'post_id' => (int)$_GET['post_id'],
   ];
+  
+  
+  if ($img_err_message == "Image uploaded successfully!") {
+    $errors = array();
+    foreach ($options as $field) {
+        if (empty($field) || !isset($field)) {
+            $errors[] = "Please fill out all fields!";
+            break;
+        }
+    }
 
-  $message = post_updating_msg($params, $PDO);
+      try {
+        if (empty($errors)){
+          $PDO->edit_post($options);
+          $message = "Post updated successfully!";
+        }
+
+    } catch (PDOException $e) {
+        $message = "Error updating post: " . $e->getMessage();
+    }
+  } 
 }
+
 ?>
 
 <link rel="stylesheet" href="<?php get_file_path(); ?>/css/admin.css">
@@ -26,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 <form class="form" action="" method="post" enctype="multipart/form-data">
   <div>
     <label for="post_title">Post Title:</label>
-    <input type="text" id="post_title" name="post_title" required>
+    <input type="text" id="post_title" name="post_title" value="<?php echo $PDO->get_post($_GET['post_id'])['post_title']  ?>" required>
   </div>
   <div>
     <label for="post_category">Category:</label>
@@ -39,21 +59,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   </div>
   <div>
     <label for="image">Image:</label>
-    <input type="file" id="image" name="image" accept="image/*" required>
+    <input type="file" id="image" name="image" accept="image/*">
+    <?php echo $img_err_message ?>
   </div>
   <div>
     <label for="post_short_text">Short Text:</label>
-    <input type="text" id="post_short_text" name="post_short_text" required>
+    <input type="text" id="post_short_text" name="post_short_text" value="<?php echo $PDO->get_post($_GET['post_id'])['post_short_text']?>" required>
   </div>
   <div>
+    
     <label for="post_text">Text:</label>
-    <textarea id="post_text" name="post_text" required></textarea>
+    <textarea id="post_text" name="post_text" required><?php echo $PDO->get_post($_GET['post_id'])['post_text'] ?></textarea>
   </div>
   <button type="submit">Update</button>
   <div class='error'>
     <?php 
       if ($_SERVER['REQUEST_METHOD'] === 'POST')
-        echo $message.' '.$img_err_message;
+        echo $message;
+        if ($errors){
+          foreach ($errors as $error){
+            echo $error . "<br>";
+          } 
+
+      }
+
     ?>
   </div>
 </form>

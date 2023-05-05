@@ -50,5 +50,5 @@ include_once '../includes/header.php';
     $how_many_pages = 10; // Following to pagination.php
     include '../includes/pagination.php'; 
     ?>
-  </div>;
+  </div>
 </div>

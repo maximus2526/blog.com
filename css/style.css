@@ -424,6 +424,9 @@ h6 {
         flex: 0 0 100%;
         flex-basis: 100%;
     }
+    .comments {
+        margin: 0 15px 67px 15px; 
+    }
     .footer-privacy-elem:last-child {
         margin-left: 5px;
         margin-right: 5px;

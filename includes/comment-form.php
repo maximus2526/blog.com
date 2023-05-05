@@ -1,5 +1,5 @@
 <?php
-    $post_id = $_GET['post_id']; 
+    $post_id = (int)$_GET['post_id']; 
 ?>
 
 
