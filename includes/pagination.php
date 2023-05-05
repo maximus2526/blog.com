@@ -1,7 +1,7 @@
 <form action="" method="get">
   
   <?php 
-  $entries_count = $PDO->get_pages_count("post"); // Extracted value from mysqli_result
+  $entries_count = $PDO->get_pages_count(); // Extracted value from mysqli_result
   $num_pages = ceil($entries_count / $how_many_pages); // How many pages will there be
   for ($page_num = 1; $page_num <= $num_pages; $page_num++):
     // Select active button for custom styles
