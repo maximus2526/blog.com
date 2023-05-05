@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 01 2023 г., 09:32
+-- Время создания: Май 05 2023 г., 09:26
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -40,8 +40,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `post_id`, `name`, `comment_text`, `comment_data`) VALUES
-(45, 1, 'admin', 'Hi', '2023-04-29'),
-(46, 3, 'admin', 'zxzx', '2023-04-29');
+(1, 63, 'admin', '12231', '2023-05-03'),
+(2, 63, 'admin', 'gfddfg', '2023-05-03');
 
 -- --------------------------------------------------------
 
@@ -78,12 +78,16 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `post_img_path`, `post_title`, `post_date`, `post_short_text`, `post_text`, `post_category`) VALUES
-(1, 'img/blog-img/img2.jpg', '8 Topic', '2023-04-03', 'Lorem ipsum dolor sit amet, <b>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \r\n ', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor \r\n incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud \r\n exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure \r\n <b>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\r\n Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, \r\n eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </b>\r\n Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni\r\n dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,\r\n adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', 'LIFESTYLE'),
-(2, 'img/blog-img/img2.jpg', 'Test1', '2023-04-29', 'Test1Test1Test1', 'Test1Test1Test1Test1Test1Test1', 'PHOTODIARY'),
-(3, 'img/blog-img/img2.jpg', 'sadfafad', '2023-04-29', 'adfsfd', 'sdaffadsadfdasfdfas', 'LIFESTYLE'),
-(4, 'img/blog-img/img2.jpg', 'sadfafad', '2023-04-29', 'adfsfd', 'sdaffadsadfdasfdfas', 'LIFESTYLE'),
-(7, 'img/blog-img/image1.jpg', '123231231231', '2023-04-29', '231123321231', '213213321321231', 'LIFESTYLE'),
-(14, 'img/blog-img/image1.jpg', 'tetsttt', '2023-04-29', '14321432342', '34243211432143124321', 'LIFESTYLE');
+(63, '/img/blog-img/image1.jpg', '134214322341', '2023-05-03', '1234432114324321', '3214214333421342', 'LIFESTYLE'),
+(64, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(65, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(66, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(68, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(69, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(70, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(71, '/img/blog-img/image1.jpg', 'Test1', '2023-05-02', 'Test1', 'Test1', 'LIFESTYLE'),
+(72, '/img/blog-img/image1.jpg', 'dfsgdgfsgfd', '2023-05-03', 'dfsggfsdgdfs', 'sgdfdfgdgsdfsd', 'LIFESTYLE'),
+(73, '/img/blog-img/image1.jpg', 'dfdfasdafaf', '2023-05-03', 'adsfadfsdafs', 'adfsadfsadfsa', 'LIFESTYLE');
 
 --
 -- Индексы сохранённых таблиц
@@ -117,13 +121,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
